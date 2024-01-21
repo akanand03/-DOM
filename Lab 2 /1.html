@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        
+        }
+        form {
+            max-width: 100px;
+            margin: 10 auto;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            
+        }
+
+        input {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100px;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        span {
+            color: red;
+            display: block;
+            margin-top: 5px;
+        }
+        </style>
+        <label for="Num1">Num1</label>
+        <input type="text" id="num1">
+        <br>
+        <label for="Num2">Num2</label>
+        <input type="text" id="num2">
+        <br>
+        <button id="btn1">Add</button>
+        <script>
+            document.getElementById("btn1").addEventListener('click',() => {
+                var num1 = document.getElementById('num1').value;
+                var num2 = document.getElementById('num2').value;
+
+                // Parse the values 
+                num1 = parseFloat(num1);
+                num2 = parseFloat(num2);
+
+                // check if it is valid or not
+                if (isNaN(num1) || isNaN(num2)){
+                    alert("Please enter valid numbers");
+                    return;
+                }
+                var sum = num1 + num2 
+
+                alert ( "The sum is :" + sum)
+
+
+            });
+        </script>
+</body>
+</html>

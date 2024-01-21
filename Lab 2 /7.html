@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two-Way Text Boxes</title>
+  <style>
+      body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    .textBox {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" class="textBox" id="textBox1" placeholder="Type here" oninput="updateTextBox(1)">
+  <br>
+  <input type="text" class="textBox" id="textBox2" placeholder="Type here" oninput="updateTextBox(2)">
+
+  <script>
+    function updateTextBox(source) {
+      var textBox1Value = document.getElementById("textBox1").value;
+      var textBox2Value = document.getElementById("textBox2").value;
+
+      if (source === 1) {
+        document.getElementById("textBox2").value = textBox1Value;
+      } else if (source === 2) {
+        document.getElementById("textBox1").value = textBox2Value;
+      }
+    }
+  </script>
+</body>
+</html>

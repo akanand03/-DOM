@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form with Validation</title>
+  <style>
+    /* Inline CSS for demonstration purposes */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    .form-container {
+      width: 50%;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-actions {
+      text-align: right;
+      padding-top: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #3498db;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    .error-message {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form id="myForm" onsubmit="return validateForm()">
+      <label for="field1">Field 1:</label>
+      <input type="text" id="field1" name="field1">
+
+      <label for="field2">Field 2:</label>
+      <input type="text" id="field2" name="field2">
+
+      <label for="field3">Field 3:</label>
+      <input type="text" id="field3" name="field3">
+
+      <div class="form-actions">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var fields = document.getElementsByTagName("input");
+      var errorMessage = document.createElement("span");
+      errorMessage.className = "error-message";
+
+      for (var i = 0; i < fields.length; i++) {
+        if (fields[i].type === "text" && fields[i].value === "") {
+          errorMessage.innerHTML = "It cannot be left empty";
+          document.getElementById(fields[i].id).focus();
+          document.getElementById(fields[i].id).parentNode.appendChild(errorMessage);
+          return false;
+        }
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>

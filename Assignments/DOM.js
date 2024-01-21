@@ -1,0 +1,1 @@
+alert('Akshit placements loading')

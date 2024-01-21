@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Inline CSS for demonstration purposes */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      background-color: #3498db;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-container {
+      width: 50%;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #employeeForm {
+      width: 100%;
+    }
+
+    #employeeForm table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #employeeForm table td {
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    #employeeForm input[type="text"],
+    #employeeForm textarea,
+    #employeeForm select,
+    #employeeForm input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #3498db; /* Blue color */
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      background-color: #ecf0f1; /* Light grayish-blue background */
+    }
+
+    .form-actions {
+      text-align: right;
+      padding-top: 20px;
+    }
+
+    #employeeForm input[type="submit"],
+    #employeeForm input[type="reset"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
+      background-color: #3498db; /* Blue color */
+      color: white;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #ecf0f1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form id="employeeForm" onsubmit="displayFormData(); return false;">
+      <h1>Employee Form</h1>
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" id="name" name="name"></td>
+        </tr>
+        <tr>
+          <td><label for="address">Address:</label></td>
+          <td><textarea id="address" name="address"></textarea></td>
+        </tr>
+        <tr>
+          <td><label for="city">City:</label></td>
+          <td>
+            <select id="city" name="city">
+              <option value="delhi">Delhi</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="kolkata">Kolkata</option>
+              <option value="chennai">Chennai</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label>Gender:</label></td>
+          <td>
+            <label for="male">
+              <input type="radio" id="male" name="gender" value="male"> Male
+            </label><br>
+            <label for="female">
+              <input type="radio" id="female" name="gender" value="female"> Female
+            </label>
+          </td>
+        </tr>
+        
+        <tr>
+          <td><label>Vehicle:</label></td>
+          <td>
+            <label for="car">
+              <input type="checkbox" id="car" name="vehicle" value="car"> Car
+            </label><br>
+            <label for="scooty">
+              <input type="checkbox" id="scooty" name="vehicle" value="scooty"> Scooty
+            </label><br>
+            <label for="bike">
+              <input type="checkbox" id="bike" name="vehicle" value="bike"> Bike
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="pic">Upload employee pic:</label></td>
+          <td><input type="file" id="pic" name="pic"></td>
+        </tr>
+        <!-- Add similar structure for the remaining form fields -->
+      </table>
+      <div class="form-actions">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+      </div>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script>
+    function displayFormData() {
+      // Get values from input fields
+      var name = document.getElementById("name").value;
+      var address = document.getElementById("address").value;
+      var city = document.getElementById("city").value;
+  
+      // Get selected gender
+      var gender;
+      if (document.getElementById("male").checked) {
+        gender = document.getElementById("male").value;
+      } else if (document.getElementById("female").checked) {
+        gender = document.getElementById("female").value;
+      }
+  
+      // Get selected vehicles
+      var vehicles = [];
+      if (document.getElementById("car").checked) {
+        vehicles.push(document.getElementById("car").value);
+      }
+      if (document.getElementById("scooty").checked) {
+        vehicles.push(document.getElementById("scooty").value);
+      }
+      if (document.getElementById("bike").checked) {
+        vehicles.push(document.getElementById("bike").value);
+      }
+  
+      // Display the result
+      var resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "<strong>Result:</strong><br>Name: " + name + "<br>Address: " + address + "<br>City: " + city + "<br>Gender: " + gender + "<br>Vehicles: " + vehicles.join(", ");
+    }
+  </script>
+</body>
+</html>

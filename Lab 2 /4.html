@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country and City Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        span {
+            color: red;
+            display: block;
+            margin-top: 5px;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<form id="myForm">
+    <label for="country">Country</label>
+    <select id="country">
+        <option value="India">India</option>
+        <option value="UK">UK</option>
+        <option value="Australia">Australia</option>
+    </select>
+    <br>
+
+    <label for="city">City</label>
+    <select id="city">
+        <!-- Add cities based on the selected country -->
+    </select>
+    <span id="emptyMsgCity"></span>
+    <br>
+
+    <button type="button" id="btn1">Submit</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    document.getElementById("btn1").addEventListener('click', () => {
+        var selectedCountry = document.getElementById('country').value;
+        var selectedCity = document.getElementById('city').value;
+
+        // Display empty message if city is not selected
+        var emptyMsgCity = document.getElementById('emptyMsgCity');
+        emptyMsgCity.textContent = selectedCity === '' ? 'Please select a city' : '';
+
+        if (selectedCity === '') {
+            alert("Please select a city");
+        } else {
+            // Your logic for handling valid input
+            var result = "Selected Country: " + selectedCountry + ", Selected City: " + selectedCity;
+            document.getElementById('result').textContent = result;
+        }
+    });
+
+    // Populate cities based on the selected country
+    document.getElementById("country").addEventListener('change', () => {
+        var countrySelect = document.getElementById("country");
+        var citySelect = document.getElementById("city");
+        var selectedCountry = countrySelect.value;
+        var cities;
+
+        // Clear existing options
+        citySelect.innerHTML = '';
+
+        // Add cities based on the selected country
+        switch (selectedCountry) {
+            case 'India':
+                cities = ['Delhi', 'Mumbai', 'Bangalore'];
+                break;
+            case 'UK':
+                cities = ['London', 'Manchester', 'Birmingham'];
+                break;
+            case 'Australia':
+                cities = ['Sydney', 'Melbourne', 'Brisbane'];
+                break;
+            default:
+                cities = [];
+                break;
+        }
+
+        cities.forEach(city => {
+            var option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+    });
+</script>
+
+</body>
+</html>

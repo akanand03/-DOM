@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        span {
+            color: red;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="myForm">
+    <label for="Num1">Num1</label>
+    <input type="text" id="num1">
+    <span id="emptyMsg1"></span>
+    <br>
+    <label for="Num2">Num2</label>
+    <input type="text" id="num2">
+    <span id="emptyMsg2"></span>
+    <br>
+    <button type="submit" id="btn1">Add</button>
+</form>
+
+<script>
+    document.getElementById("myForm").addEventListener('submit', (e) => {
+        e.preventDefault();
+        var num1 = document.getElementById('num1').value;
+        var num2 = document.getElementById('num2').value;
+        
+        var emptyMsg1 = document.getElementById('emptyMsg1');
+        emptyMsg1.textContent = num1 === '' ? 'Please enter a number' : '';
+
+        var emptyMsg2 = document.getElementById('emptyMsg2');
+        emptyMsg2.textContent = num2 === '' ? 'Please enter a number' : '';
+
+        if (num1 === '' || num2 === '') {
+            alert("ENTER VALUE OF NUM1 AND NUM2");
+        } else {
+            // Your logic for handling valid input
+            var sum = parseFloat(num1) + parseFloat(num2);
+            alert("The sum is: " + sum);
+        }
+    });
+</script>
+
+</body>
+</html>

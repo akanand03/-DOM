@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capstone Project</title>
+  <style>
+    h1 {
+      text-align: center;
+      color: red; /* Initial color */
+    }
+  </style>
+</head>
+<body>
+  <h1 id="capstoneHeading">Capstone Project using FSD</h1>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("capstoneHeading");
+
+      function changeColor() {
+        var currentColor = heading.style.color;
+
+        // RGB color cycle: red -> green -> blue
+        if (currentColor === "red") {
+          heading.style.color = "green";
+        } else if (currentColor === "green") {
+          heading.style.color = "blue";
+        } else {
+          heading.style.color = "red";
+        }
+
+        // Set the next color change after 5 seconds
+        setTimeout(changeColor, 5000);
+      }
+
+      // Start the color change cycle
+      setTimeout(changeColor, 5000);
+    });
+  </script>
+</body>
+</html>
